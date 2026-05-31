@@ -66,7 +66,7 @@ const HowItWorks: React.FC = () => {
             Simple steps to{" "}
             <em className="not-italic italic text-[#2A6666] dark:text-[#FEF0AF]">interview readiness</em>
           </h3>
-          <p className="text-[15px] text-[#5C4A3A]/60 font-medium max-w-lg mx-auto leading-relaxed transition-colors duration-300 dark:text-white/55">
+          <p className="text-[15px] text-[#1a1a1a] font-medium max-w-lg mx-auto leading-relaxed transition-colors duration-300 dark:text-white/55">
             No complex software to install. Start practicing out loud in less than a minute.
           </p>
         </div>
@@ -114,7 +114,7 @@ const HowItWorks: React.FC = () => {
                   <h4 className="text-lg font-black text-[#1a1a1a] mb-3 tracking-tight transition-colors duration-300 dark:text-white">
                     {step.title}
                   </h4>
-                  <p className="text-sm text-[#5C4A3A]/60 font-medium leading-relaxed transition-colors duration-300 dark:text-white/55">
+                  <p className="text-sm text-[#1a1a1a] font-medium leading-relaxed transition-colors duration-300 dark:text-white/55">
                     {step.desc}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ const HowItWorks: React.FC = () => {
               className="bg-white border border-[#E9ECEF] rounded-2xl p-5 text-center hover:border-[#2A6666]/20 hover:shadow-md hover:shadow-[#2A6666]/5 transition-all duration-300 dark:bg-white/[0.04] dark:border-white/10 dark:hover:border-[#FEF0AF]/25"
             >
               <div className="text-2xl font-black text-[#2A6666] mb-1 dark:text-[#FEF0AF]">{value}</div>
-              <div className="text-[11px] text-[#5C4A3A]/50 font-medium leading-snug dark:text-white/45">{label}</div>
+              <div className="text-[11px] text-[#1a1a1a] font-medium leading-snug dark:text-white/45">{label}</div>
             </div>
           ))}
         </div>

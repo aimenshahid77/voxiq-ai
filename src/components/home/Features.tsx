@@ -46,7 +46,7 @@ const featureCards = [
         {scoreMetrics.map((metric) => (
           <div key={metric.label}>
             <div className="mb-1.5 flex justify-between text-[10px] font-black uppercase tracking-widest">
-              <span className="text-[#5C4A3A]/55 dark:text-white/45">
+              <span className="text-[#1a1a1a] dark:text-white/45">
                 {metric.label}
               </span>
               <span className="text-[#2A6666] dark:text-[#FEF0AF]">
@@ -75,7 +75,7 @@ const featureCards = [
           (item) => (
             <div key={item} className="flex items-start gap-2">
               <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#2A6666] dark:text-[#FEF0AF]" />
-              <span className="text-xs font-semibold text-[#5C4A3A]/70 dark:text-white/65">
+              <span className="text-xs font-semibold text-[#1a1a1a] dark:text-white/65">
                 {item}
               </span>
             </div>
@@ -95,7 +95,7 @@ const featureCards = [
           (item) => (
             <div key={item} className="flex items-start gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#D6B957]" />
-              <span className="text-xs font-semibold leading-relaxed text-[#5C4A3A]/70 dark:text-white/65">
+              <span className="text-xs font-semibold leading-relaxed text-[#1a1a1a] dark:text-white/65">
                 {item}
               </span>
             </div>
@@ -114,7 +114,7 @@ const featureCards = [
         <p className="text-[10px] font-black uppercase tracking-widest text-[#2A6666] dark:text-[#FEF0AF]">
           Feedback
         </p>
-        <p className="mt-2 text-xs font-medium leading-relaxed text-[#5C4A3A]/65 dark:text-white/65">
+        <p className="mt-2 text-xs font-medium leading-relaxed text-[#1a1a1a] dark:text-white/65">
           Your answer was structured well, but the technical section would be
           stronger with one concrete constraint and the decision you made.
         </p>
@@ -133,7 +133,7 @@ const featureCards = [
             <p className="text-xs font-black text-[#1a1a1a] dark:text-white">
               Session 12
             </p>
-            <p className="mt-1 text-[10px] font-semibold text-[#5C4A3A]/45 dark:text-white/40">
+            <p className="mt-1 text-[10px] font-semibold text-[#1a1a1a] dark:text-white/40">
               Transcript saved
             </p>
           </div>
@@ -196,7 +196,7 @@ const Features: React.FC = () => {
               the app actually scores you
             </em>
           </h3>
-          <p className="mx-auto max-w-lg text-[15px] font-medium leading-relaxed text-[#5C4A3A]/60 transition-colors duration-300 dark:text-white/55">
+          <p className="mx-auto max-w-lg text-[15px] font-medium leading-relaxed text-[#1a1a1a] transition-colors duration-300 dark:text-white/55">
             After a mock interview, the app turns your transcript into a focused
             evaluation: scores, strengths, improvement areas, and detailed
             coaching for the next attempt.
@@ -231,7 +231,7 @@ const Features: React.FC = () => {
                   <h4 className="mb-2 text-[15px] font-black leading-snug text-[#1a1a1a] transition-colors duration-300 dark:text-white">
                     {card.title}
                   </h4>
-                  <p className="text-xs font-medium leading-relaxed text-[#5C4A3A]/55 transition-colors duration-300 dark:text-white/55">
+                  <p className="text-xs font-medium leading-relaxed text-[#1a1a1a] transition-colors duration-300 dark:text-white/55">
                     {card.description}
                   </p>
                 </div>

@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
                 className={`text-sm font-semibold transition-colors duration-200 cursor-pointer pb-0.5 ${
                   i === 0
                     ? "text-[#2A6666] border-b-2 border-[#2A6666] dark:text-[#FEF0AF] dark:border-[#FEF0AF]"
-                    : "text-[#5C4A3A]/70 hover:text-[#2A6666] border-b-2 border-transparent hover:border-[#2A6666]/30 dark:text-white/60 dark:hover:text-[#FEF0AF] dark:hover:border-[#FEF0AF]/30"
+                    : "text-[#1a1a1a] hover:text-[#2A6666] border-b-2 border-transparent hover:border-[#2A6666]/30 dark:text-white/60 dark:hover:text-[#FEF0AF] dark:hover:border-[#FEF0AF]/30"
                 }`}
               >
                 {label}
@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
               <>
                 <button
                   onClick={() => navigate("/login")}
-                  className="text-sm font-semibold text-[#5C4A3A]/70 hover:text-[#2A6666] transition-colors duration-200 px-4 py-2 dark:text-white/60 dark:hover:text-[#FEF0AF]"
+                  className="text-sm font-semibold text-[#1a1a1a] hover:text-[#2A6666] transition-colors duration-200 px-4 py-2 dark:text-white/60 dark:hover:text-[#FEF0AF]"
                 >
                   Sign Up
                 </button>
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen((p) => !p)}
-            className="md:hidden p-2 rounded-lg border border-[#E9ECEF] text-[#5C4A3A] hover:border-[#2A6666]/30 transition-all dark:border-white/10 dark:text-white/70"
+            className="md:hidden p-2 rounded-lg border border-[#E9ECEF] text-[#1a1a1a] hover:border-[#2A6666]/30 transition-all dark:border-white/10 dark:text-white/70"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               {mobileMenuOpen
@@ -163,7 +163,7 @@ const Hero: React.FC = () => {
               <button
                 key={label}
                 onClick={() => id ? scrollTo(id) : window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="text-left px-4 py-3 text-sm font-semibold text-[#5C4A3A]/80 hover:text-[#2A6666] hover:bg-[#F1F3F5] rounded-xl transition-all duration-200 dark:text-white/65 dark:hover:bg-white/5 dark:hover:text-[#FEF0AF]"
+                className="text-left px-4 py-3 text-sm font-semibold text-[#1a1a1a] hover:text-[#2A6666] hover:bg-[#F1F3F5] rounded-xl transition-all duration-200 dark:text-white/65 dark:hover:bg-white/5 dark:hover:text-[#FEF0AF]"
               >
                 {label}
               </button>
@@ -210,7 +210,7 @@ const Hero: React.FC = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="text-base text-[#5C4A3A]/65 max-w-md leading-relaxed font-medium transition-colors duration-300 dark:text-white/60">
+          <p className="text-base text-[#1a1a1a] max-w-md leading-relaxed font-medium transition-colors duration-300 dark:text-white/60">
             Personalized practice, real-time feedback, and expert guidance. Built for humans who get nervous, not robots who don't.
           </p>
 
@@ -247,7 +247,7 @@ const Hero: React.FC = () => {
                 </div>
               ))}
             </div>
-            <p className="text-sm text-[#5C4A3A]/60 dark:text-white/55">
+            <p className="text-sm text-[#1a1a1a] dark:text-white/55">
               <span className="font-bold text-[#1a1a1a] dark:text-white">10+ candidates</span> landed their dream role
             </p>
           </div>
@@ -274,7 +274,7 @@ const Hero: React.FC = () => {
             <div className="mb-4 pb-3 border-b border-[#F1F3F5] flex items-center justify-between dark:border-white/10">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-                <span className="text-[10px] font-bold text-[#5C4A3A]/50 uppercase tracking-wider dark:text-white/45">AI Session Live</span>
+                <span className="text-[10px] font-bold text-[#1a1a1a] uppercase tracking-wider dark:text-white/45">AI Session Live</span>
               </div>
               <div className="h-7 w-7 rounded-full bg-white border border-[#E9ECEF] flex items-center justify-center dark:border-white/10 dark:bg-white/5">
                 <svg className="w-3.5 h-3.5 text-[#2A6666]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -297,7 +297,7 @@ const Hero: React.FC = () => {
                     </div>
                     <span className="text-[8px] font-black text-[#2A6666]/60 uppercase tracking-wider">AI Coach</span>
                   </div>
-                  <p className="text-[11px] text-[#3D2B1F]/80 font-medium leading-relaxed dark:text-white/70">
+                  <p className="text-[11px] text-[#1a1a1a] font-medium leading-relaxed dark:text-white/70">
                     "Walk me through a challenging project where you managed conflicting stakeholder expectations."
                   </p>
                 </div>
@@ -321,8 +321,8 @@ const Hero: React.FC = () => {
                     </svg>
                     <span className="text-[8px] font-black text-[#2A6666]/60 uppercase tracking-wider">Coaching Feedback</span>
                   </div>
-                  <p className="text-[11px] text-[#3D2B1F]/70 leading-relaxed dark:text-white/65">Excellent STAR method structure!</p>
-                  <div className="flex gap-3 mt-1.5 text-[9px] font-bold text-[#5C4A3A]/50 dark:text-white/45">
+                  <p className="text-[11px] text-[#1a1a1a] leading-relaxed dark:text-white/65">Excellent STAR method structure!</p>
+                  <div className="flex gap-3 mt-1.5 text-[9px] font-bold text-[#1a1a1a] dark:text-white/45">
                     <span>Clarity: <strong className="text-[#2A6666]">94%</strong></span>
                     <span>Confidence: <strong className="text-[#2A6666]">88%</strong></span>
                   </div>
@@ -333,7 +333,7 @@ const Hero: React.FC = () => {
             {/* Score bars at bottom */}
             <div className="space-y-2 pt-3 border-t border-[#F1F3F5] dark:border-white/10">
               <div>
-                <div className="flex justify-between mb-1 text-[9px] font-bold text-[#5C4A3A]/50 uppercase tracking-wider">
+                <div className="flex justify-between mb-1 text-[9px] font-bold text-[#1a1a1a] uppercase tracking-wider">
                   <span>Clarity</span><span className="text-[#2A6666]">96%</span>
                 </div>
                 <div className="w-full bg-[#F1F3F5] h-1.5 rounded-full">
@@ -341,7 +341,7 @@ const Hero: React.FC = () => {
                 </div>
               </div>
               <div>
-                <div className="flex justify-between mb-1 text-[9px] font-bold text-[#5C4A3A]/50 uppercase tracking-wider">
+                <div className="flex justify-between mb-1 text-[9px] font-bold text-[#1a1a1a] uppercase tracking-wider">
                   <span>Confidence</span><span className="text-[#2A6666]">88%</span>
                 </div>
                 <div className="w-full bg-[#F1F3F5] h-1.5 rounded-full">
@@ -362,10 +362,10 @@ const Hero: React.FC = () => {
       {/* Scroll cue */}
       <div className="relative z-10 flex justify-center pb-10">
         <button onClick={() => scrollTo("features")} className="flex flex-col items-center gap-1 group">
-          <span className="text-[10px] font-bold text-[#5C4A3A]/30 uppercase tracking-widest group-hover:text-[#2A6666]/50 transition-colors dark:text-white/30 dark:group-hover:text-[#FEF0AF]/60">
+          <span className="text-[10px] font-bold text-[#1a1a1a] uppercase tracking-widest group-hover:text-[#2A6666]/50 transition-colors dark:text-white/30 dark:group-hover:text-[#FEF0AF]/60">
             Scroll
           </span>
-          <svg className="w-4 h-4 text-[#5C4A3A]/30 group-hover:text-[#2A6666]/50 transition-colors animate-bounce dark:text-white/30 dark:group-hover:text-[#FEF0AF]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-4 h-4 text-[#1a1a1a] group-hover:text-[#2A6666]/50 transition-colors animate-bounce dark:text-white/30 dark:group-hover:text-[#FEF0AF]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
