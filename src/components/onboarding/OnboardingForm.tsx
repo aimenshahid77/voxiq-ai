@@ -228,9 +228,9 @@ const OnboardingForm = () => {
                           {...field}
                           className="w-full appearance-none rounded-2xl border-2 border-[#E9ECEF] bg-white px-4 py-3 pr-11 text-sm font-medium text-[#1a1a1a] outline-none transition-all focus:border-[#2A6666] dark:border-white/10 dark:bg-white/[0.05] dark:text-white dark:focus:border-[#FEF0AF]"
                         >
-                          <option value="junior">Junior</option>
-                          <option value="mid">Mid</option>
-                          <option value="senior">Senior</option>
+                          <option value="junior" className="dark:bg-[#142020] dark:text-white">Junior</option>
+                          <option value="mid" className="dark:bg-[#142020] dark:text-white">Mid</option>
+                          <option value="senior" className="dark:bg-[#142020] dark:text-white">Senior</option>
                         </select>
                         <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5C4A3A]/50 dark:text-white/45" />
                       </div>
