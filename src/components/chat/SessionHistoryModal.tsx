@@ -121,30 +121,40 @@ const SessionHistoryModal = ({
               <div className="rounded-3xl border border-[#E9ECEF] bg-[#F8F9FA] px-6 py-8 text-center text-sm font-semibold text-[#5C4A3A]/60 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
                 Loading transcript...
               </div>
-            ) : detailedSession?.transcript &&
-              detailedSession.transcript.length > 0 ? (
-              <div className="custom-scrollbar mb-6 flex max-h-[35vh] flex-col gap-3 overflow-y-auto rounded-3xl border border-[#E9ECEF] bg-[#F8F9FA] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-                {detailedSession.transcript.map((entry, index) => (
-                  <div
-                    key={index}
-                    className={`flex ${entry.role === "user" ? "justify-end" : "justify-start"}`}
-                  >
+            ) : detailedSession?.transcript ? (
+              typeof detailedSession.transcript === "string" ? (
+                <div className="custom-scrollbar mb-6 max-h-[35vh] overflow-y-auto rounded-3xl border border-[#E9ECEF] bg-[#F8F9FA] p-4 text-xs leading-relaxed whitespace-pre-wrap text-[#1a1a1a] dark:border-white/10 dark:bg-white/[0.04] dark:text-white">
+                  {detailedSession.transcript}
+                </div>
+              ) : (
+                <div className="custom-scrollbar mb-6 flex max-h-[35vh] flex-col gap-3 overflow-y-auto rounded-3xl border border-[#E9ECEF] bg-[#F8F9FA] p-4 dark:border-white/10 dark:bg-white/[0.04]">
+                  {(
+                    detailedSession.transcript as Array<{
+                      role: string;
+                      content: string;
+                    }>
+                  ).map((entry, index) => (
                     <div
-                      className={`max-w-[85%] rounded-3xl border px-4 py-2.5 text-xs font-medium leading-relaxed shadow-sm ${
-                        entry.role === "user"
-                          ? "rounded-tr-md border-[#2A6666] bg-[#2A6666] text-white"
-                          : "rounded-tl-md border-[#E9ECEF] bg-white text-[#1a1a1a] dark:border-white/10 dark:bg-white/[0.06] dark:text-white"
-                      }`}
+                      key={index}
+                      className={`flex ${entry.role === "user" ? "justify-end" : "justify-start"}`}
                     >
-                      {entry.role === "user" ? (
-                        entry.content
-                      ) : (
-                        <MarkdownRenderer content={entry.content} />
-                      )}
+                      <div
+                        className={`max-w-[85%] rounded-3xl border px-4 py-2.5 text-xs font-medium leading-relaxed shadow-sm ${
+                          entry.role === "user"
+                            ? "rounded-tr-md border-[#2A6666] bg-[#2A6666] text-white"
+                            : "rounded-tl-md border-[#E9ECEF] bg-white text-[#1a1a1a] dark:border-white/10 dark:bg-white/[0.06] dark:text-white"
+                        }`}
+                      >
+                        {entry.role === "user" ? (
+                          entry.content
+                        ) : (
+                          <MarkdownRenderer content={entry.content} />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )
             ) : (
               <p className="mb-6 rounded-3xl border border-[#E9ECEF] bg-[#F8F9FA] px-6 py-6 text-center text-sm font-semibold text-[#5C4A3A]/60 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
                 Transcript not available yet.

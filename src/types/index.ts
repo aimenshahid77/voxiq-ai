@@ -43,7 +43,7 @@ export interface MockSession {
   vapi_call_id: string;
   status: string;
   duration_seconds: number;
-  transcript: TranscriptEntry[];
+  transcript: TranscriptEntry[] | string;
   evaluation: Evaluation | null;
   started_at: string;
   ended_at: string;
