@@ -57,25 +57,25 @@ export const completeOnboarding = async () => {
 };
 
 // OAuth — get the redirect URL for each provider
-const OAUTH_REDIRECT_URI = "http://localhost:5173/auth/callback";
+const OAUTH_REDIRECT_URI = "https://voxiq-ai.vercel.app/auth/callback";
 
 export const getGoogleAuthUrl = async (): Promise<string> => {
   const response = await api.get(
-    `/api/auth/oauth/google/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`
+    `/api/auth/oauth/google/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`,
   );
   return response.data.auth_url;
 };
 
 export const getGithubAuthUrl = async (): Promise<string> => {
   const response = await api.get(
-    `/api/auth/oauth/github/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`
+    `/api/auth/oauth/github/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`,
   );
   return response.data.auth_url;
 };
 
 export const getLinkedinAuthUrl = async (): Promise<string> => {
   const response = await api.get(
-    `/api/auth/oauth/linkedin/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`
+    `/api/auth/oauth/linkedin/auth-url/?redirect_uri=${OAUTH_REDIRECT_URI}`,
   );
   return response.data.auth_url;
 };
@@ -83,7 +83,7 @@ export const getLinkedinAuthUrl = async (): Promise<string> => {
 // Exchange the code for JWT tokens
 export const exchangeOAuthCode = async (
   provider: "google" | "github" | "linkedin",
-  code: string
+  code: string,
 ) => {
   const response = await api.post(`/api/auth/oauth/${provider}/login/`, {
     code,
