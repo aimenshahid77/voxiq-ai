@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,6 +14,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 const LoginForm = ({ toggle }: { toggle: () => void }) => {
   const { mutate: loginUser, isPending, isError } = useLogin();
+  const [isSocialPending, setIsSocialPending] = useState(false);
 
   const { control, handleSubmit } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -26,12 +28,16 @@ const LoginForm = ({ toggle }: { toggle: () => void }) => {
       onSubmit={handleSubmit(onSubmit)}
       className="w-full flex flex-col items-center"
     >
-      <div className="flex items-center gap-2 my-2 w-full">
+      <p className="text-sm text-gray-500 dark:text-white/45 mb-4 font-semibold text-center">continue with</p>
+      <SocialLoginButtons
+        disabled={isPending || isSocialPending}
+        onPendingChange={setIsSocialPending}
+      />
+      <div className="flex items-center gap-2 my-4 w-full">
         <hr className="flex-1 border-[#E9ECEF] dark:border-white/10" />
-
+        <span className="text-sm text-gray-500 dark:text-white/45 font-semibold">or</span>
         <hr className="flex-1 border-[#E9ECEF] dark:border-white/10" />
       </div>
-      <SocialLoginButtons />
 
       <div className="w-full relative my-4">
         {/* Email Icon */}
@@ -58,7 +64,8 @@ const LoginForm = ({ toggle }: { toggle: () => void }) => {
                 {...field}
                 type="email"
                 placeholder="Email"
-                className={`w-full py-4 pl-14 pr-4 bg-[#FEF0AF] rounded-lg border-2 ${fieldState.invalid ? "border-red-500" : "border-[#FEF0AF]"} text-[#1a1a1a] outline-none transition-colors placeholder:text-[#5C4A3A]/45 focus:border-[#2A6666] dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35 dark:border-white/10 dark:focus:border-[#FEF0AF]`}
+                disabled={isPending || isSocialPending}
+                className={`w-full py-4 pl-14 pr-4 bg-[#FEF0AF] rounded-lg border-2 ${fieldState.invalid ? "border-red-500" : "border-[#FEF0AF]"} text-[#1a1a1a] outline-none transition-colors placeholder:text-[#5C4A3A]/45 focus:border-[#2A6666] dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35 dark:border-white/10 dark:focus:border-[#FEF0AF] disabled:opacity-60`}
               />
               {fieldState.invalid && (
                 <p className="absolute -bottom-5 left-0 text-xs text-red-500">
@@ -95,7 +102,8 @@ const LoginForm = ({ toggle }: { toggle: () => void }) => {
                 {...field}
                 type="password"
                 placeholder="Password"
-                className={`w-full py-4 pl-14 pr-4 bg-[#FEF0AF] rounded-lg border-2 ${fieldState.invalid ? "border-red-500" : "border-[#FEF0AF]"} text-[#1a1a1a] outline-none transition-colors placeholder:text-[#5C4A3A]/45 focus:border-[#2A6666] dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35 dark:border-white/10 dark:focus:border-[#FEF0AF]`}
+                disabled={isPending || isSocialPending}
+                className={`w-full py-4 pl-14 pr-4 bg-[#FEF0AF] rounded-lg border-2 ${fieldState.invalid ? "border-red-500" : "border-[#FEF0AF]"} text-[#1a1a1a] outline-none transition-colors placeholder:text-[#5C4A3A]/45 focus:border-[#2A6666] dark:bg-white/[0.06] dark:text-white dark:placeholder:text-white/35 dark:border-white/10 dark:focus:border-[#FEF0AF] disabled:opacity-60`}
               />
               {fieldState.invalid && (
                 <p className="absolute -bottom-5 left-0 text-xs text-red-500">
@@ -109,8 +117,8 @@ const LoginForm = ({ toggle }: { toggle: () => void }) => {
 
       <button
         type="submit"
-        disabled={isPending}
-        className="w-full py-3 my-4 rounded-lg border-none bg-[#2A6666] text-white text-xl font-medium cursor-pointer hover:bg-[#3A706A] transition-colors focus:outline-none"
+        disabled={isPending || isSocialPending}
+        className="w-full py-3 my-4 rounded-lg border-none bg-[#2A6666] text-white text-xl font-medium cursor-pointer hover:bg-[#3A706A] transition-colors focus:outline-none disabled:opacity-60"
       >
         {isPending ? "Signing in..." : "Sign in"}
       </button>

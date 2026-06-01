@@ -47,6 +47,7 @@ const AuthPage = () => {
               className={`p-0 bg-transparent transition-transform duration-500 ease-in-out
                 /* Desktop card styles */
                 md:p-8 md:bg-white md:rounded-3xl md:shadow-[0_5px_15px_rgba(0,0,0,0.35)] md:dark:bg-[#142020] md:dark:border md:dark:border-white/10
+                md:max-h-[85vh] md:overflow-y-auto
                 ${isSignIn ? "md:scale-0 md:delay-0 md:pointer-events-none" : "md:scale-100 md:delay-[1000ms]"}`}
             >
               <RegisterForm toggle={() => setIsSignIn(true)} />
@@ -66,6 +67,7 @@ const AuthPage = () => {
               className={`p-0 bg-transparent transition-transform duration-500 ease-in-out
                 /* Desktop card styles */
                 md:p-8 md:bg-white md:rounded-3xl md:shadow-[0_5px_15px_rgba(0,0,0,0.35)] md:dark:bg-[#142020] md:dark:border md:dark:border-white/10
+                md:max-h-[85vh] md:overflow-y-auto
                 ${isSignIn ? "md:scale-100 md:delay-[1000ms]" : "md:scale-0 md:delay-0 md:pointer-events-none"}`}
             >
               <LoginForm toggle={() => setIsSignIn(false)} />
@@ -81,11 +83,11 @@ const AuthPage = () => {
           className={`w-full h-1/2 flex items-center justify-center flex-col text-white px-8 absolute top-0 left-0 transition-transform duration-1000 ease-in-out
             /* Desktop styles */
             md:w-1/2 md:h-full md:static
-            ${isSignIn ? "translate-x-0" : "-translate-x-[250%]"}`}
+            ${isSignIn ? "md:-translate-x-12" : "-translate-x-[250%]"}`}
         >
           <div className="text-center">
             <h2 className="text-3xl md:text-5xl font-extrabold my-2 md:my-8 tracking-wide">Welcome</h2>
-            <p className="hidden md:block font-semibold text-lg max-w-md">
+            <p className="hidden md:block font-semibold text-lg max-w-md mx-auto">
               Log in to continue your journey and master your next interview.
             </p>
           </div>
@@ -96,11 +98,11 @@ const AuthPage = () => {
           className={`w-full h-1/2 flex items-center justify-center flex-col text-white px-8 absolute top-0 left-0 transition-transform duration-1000 ease-in-out
             /* Desktop styles */
             md:w-1/2 md:h-full md:static
-            ${isSignIn ? "translate-x-[250%]" : "translate-x-0"}`}
+            ${isSignIn ? "translate-x-[250%]" : "md:translate-x-12"}`}
         >
           <div className="text-center">
             <h2 className="text-3xl md:text-5xl font-extrabold my-2 md:my-8 tracking-wide">Join with us</h2>
-            <p className="hidden md:block font-semibold text-lg max-w-md">
+            <p className="hidden md:block font-semibold text-lg max-w-md mx-auto">
               Create an account to start practicing with our AI right away.
               And then take the mock Interview whenever you are ready!
             </p>
