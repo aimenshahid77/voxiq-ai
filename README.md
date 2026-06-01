@@ -1,4 +1,4 @@
-# Voxiq — AI Interview Preparation Platform
+# Voxiq, AI Interview Preparation Platform
 
 Voxiq is a full-stack AI-powered interview preparation web application. It helps users practice for job interviews through AI chat preparation and live mock voice interviews with real-time transcription and performance evaluation.
 
