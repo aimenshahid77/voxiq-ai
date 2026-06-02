@@ -86,7 +86,7 @@ src/
 ### Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/voxiq-frontend.git
+git clone https://github.com/aimenshahid77/voxiq-frontend.git
 cd voxiq-frontend
 npm install
 ```
