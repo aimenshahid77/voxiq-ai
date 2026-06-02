@@ -151,17 +151,6 @@ History → View transcript + AI evaluation scorecard
 
 ---
 
-## Environment Variables (Production)
-
-Set these in Vercel dashboard under Settings → Environment Variables:
-
-```
-VITE_API_URL=https://voxiq-ai.onrender.com
-VITE_VAPI_PUBLIC_KEY=your_vapi_public_key
-```
-
----
-
 ## Contributing
 
 This is a semester project. Pull requests are not open at this time.
