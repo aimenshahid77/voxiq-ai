@@ -7,6 +7,7 @@ export interface User {
   current_role: string;
   experience_level: string;
   resume: string | null;
+  resume_url?: string | null;
   onboarding_complete: boolean;
   created_at: string;
 }

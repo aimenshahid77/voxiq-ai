@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import useAuthStore from "@/store/authStore";
-import { getProfile, updateProfile, uploadResume } from "@/services/auth";
+import { getProfile, updateProfile, uploadResume, getFreshResumeUrl } from "@/services/auth";
 
 const editSchema = z.object({
   current_role: z.string().min(1, "Role is required"),
@@ -32,6 +32,7 @@ const ProfileView = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [newResume, setNewResume] = useState<File | null>(null);
   const [resumeWarning, setResumeWarning] = useState(false);
+  const [isFetchingResume, setIsFetchingResume] = useState(false);
 
   const { control, handleSubmit } = useForm<EditFormData>({
     resolver: zodResolver(editSchema),
@@ -73,6 +74,27 @@ const ProfileView = () => {
       toast.error("Failed to update profile. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleViewResume = async () => {
+    setIsFetchingResume(true);
+    try {
+      const response = await getFreshResumeUrl();
+      if (response && response.resume_url) {
+        window.open(response.resume_url, "_blank");
+      } else {
+        toast.error("Could not retrieve resume link.");
+      }
+    } catch (error) {
+      const apiError = error as { response?: { status: number } };
+      if (apiError.response?.status === 404) {
+        toast.error("No resume uploaded yet.");
+      } else {
+        toast.error("Failed to open resume. Please try again.");
+      }
+    } finally {
+      setIsFetchingResume(false);
     }
   };
 
@@ -160,15 +182,19 @@ const ProfileView = () => {
                 Resume
               </p>
               {user?.resume ? (
-                <a
-                  href={user.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-[#2A6666]/20 bg-white px-4 py-2.5 text-sm font-black text-[#2A6666] transition-all hover:border-[#2A6666]/40 hover:bg-[#F1F3F5] dark:border-[#FEF0AF]/20 dark:bg-white/[0.05] dark:text-[#FEF0AF] dark:hover:border-[#FEF0AF]/35 dark:hover:bg-white/[0.08]"
+                <button
+                  type="button"
+                  onClick={handleViewResume}
+                  disabled={isFetchingResume}
+                  className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-[#2A6666]/20 bg-white px-4 py-2.5 text-sm font-black text-[#2A6666] transition-all hover:border-[#2A6666]/40 hover:bg-[#F1F3F5] dark:border-[#FEF0AF]/20 dark:bg-white/[0.05] dark:text-[#FEF0AF] dark:hover:border-[#FEF0AF]/35 dark:hover:bg-white/[0.08] disabled:opacity-60"
                 >
-                  <Download className="h-4 w-4" />
-                  View uploaded resume
-                </a>
+                  {isFetchingResume ? (
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#2A6666] border-t-transparent dark:border-[#FEF0AF]" />
+                  ) : (
+                    <Download className="h-4 w-4" />
+                  )}
+                  {isFetchingResume ? "Opening..." : "View uploaded resume"}
+                </button>
               ) : (
                 <p className="mt-2 text-sm font-semibold text-[#5C4A3A]/55 dark:text-white/50">
                   No resume uploaded

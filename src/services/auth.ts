@@ -51,6 +51,11 @@ export const uploadResume = async (file: File) => {
   return response.data;
 };
 
+export const getFreshResumeUrl = async () => {
+  const response = await api.get("/api/auth/profile/resume/");
+  return response.data as { resume_url: string };
+};
+
 export const completeOnboarding = async () => {
   const response = await api.patch("/api/auth/onboarding/complete/");
   return response.data;
