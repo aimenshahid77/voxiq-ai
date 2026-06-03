@@ -244,7 +244,7 @@ export function AppSidebar() {
                   <p className="px-3 py-2 text-xs font-semibold text-[#5C4A3A]/50 dark:text-white/45">
                     Loading interviews...
                   </p>
-                ) : interviews && interviews.length > 0 ? (
+                ) : Array.isArray(interviews) && interviews.length > 0 ? (
                   interviews.map((interview) => {
                     const isActive = location.pathname === `/dashboard/interviews/${interview.id}`;
                     return (

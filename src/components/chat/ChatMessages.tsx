@@ -59,16 +59,19 @@ const ChatMessages = ({
   }
 
   const latestAssistantIndex =
-    chatHistory?.reduce(
-      (latest, msg, index) => (msg.role === "assistant" ? index : latest),
-      -1,
-    ) ?? -1;
+    Array.isArray(chatHistory)
+      ? chatHistory.reduce(
+          (latest, msg, index) => (msg.role === "assistant" ? index : latest),
+          -1,
+        )
+      : -1;
 
   return (
     <>
-      {chatHistory?.map((msg, index) => {
-        const isLatestAssistant =
-          msg.role === "assistant" && index === latestAssistantIndex;
+      {Array.isArray(chatHistory) &&
+        chatHistory.map((msg, index) => {
+          const isLatestAssistant =
+            msg.role === "assistant" && index === latestAssistantIndex;
 
         return (
         <div

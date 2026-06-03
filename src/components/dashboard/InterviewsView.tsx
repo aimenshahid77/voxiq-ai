@@ -33,7 +33,7 @@ const InterviewsView = () => {
           <Loader2 className="h-5 w-5 animate-spin" />
           Loading interviews...
         </div>
-      ) : interviews && interviews.length > 0 ? (
+      ) : Array.isArray(interviews) && interviews.length > 0 ? (
         <div className="grid grid-cols-1 gap-4">
           {interviews.map((interview, index) => (
             <button

@@ -46,7 +46,7 @@ const SessionHistoryModal = ({
         </header>
 
         {!selectedSession ? (
-          voiceSessions && voiceSessions.length > 0 ? (
+          Array.isArray(voiceSessions) && voiceSessions.length > 0 ? (
             <div className="flex flex-col gap-3">
               {voiceSessions.map((session) => (
                 <button

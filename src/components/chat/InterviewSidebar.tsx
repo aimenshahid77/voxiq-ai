@@ -55,7 +55,7 @@ const InterviewSidebar = ({ onNewInterview }: InterviewSidebarProps) => {
             <Loader2 className="h-4 w-4 animate-spin" />
             Loading interviews...
           </div>
-        ) : interviews && interviews.length > 0 ? (
+        ) : Array.isArray(interviews) && interviews.length > 0 ? (
           interviews.map((interview) => {
             const isActive =
               location.pathname === `/dashboard/interviews/${interview.id}`;
