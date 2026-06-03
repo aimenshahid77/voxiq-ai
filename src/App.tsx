@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
+import { useProfile } from "./hooks/useAuth";
 
 import LandingPage from "./pages/LandingPage";
 import AuthPage from "./pages/AuthPage";
@@ -31,6 +32,12 @@ const OnboardingRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+const ProfileSync = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAuthStore();
+  useProfile();
+  return <>{children}</>;
+};
+
 function App() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
@@ -43,65 +50,67 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/register" element={<AuthPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/help" element={<HelpCenterPage />} />
-          <Route path="/auth/callback" element={<OAuthCallbackPage />} />
+      <ProfileSync>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/register" element={<AuthPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/help" element={<HelpCenterPage />} />
+            <Route path="/auth/callback" element={<OAuthCallbackPage />} />
 
-          <Route
-            path="/onboarding"
-            element={
-              <OnboardingRoute>
-                <OnboardingPage />
-              </OnboardingRoute>
-            }
-          />
+            <Route
+              path="/onboarding"
+              element={
+                <OnboardingRoute>
+                  <OnboardingPage />
+                </OnboardingRoute>
+              }
+            />
 
-          {/* Profile view */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
+            {/* Profile view */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Interviews list view */}
-          <Route
-            path="/dashboard/interviews"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
+            {/* Interviews list view */}
+            <Route
+              path="/dashboard/interviews"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Specific interview chat */}
-          <Route
-            path="/dashboard/interviews/:id"
-            element={
-              <ProtectedRoute>
-                <ChatPage />
-              </ProtectedRoute>
-            }
-          />
+            {/* Specific interview chat */}
+            <Route
+              path="/dashboard/interviews/:id"
+              element={
+                <ProtectedRoute>
+                  <ChatPage />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/mock/:id"
-            element={
-              <ProtectedRoute>
-                <MockInterviewPage />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path="/mock/:id"
+              element={
+                <ProtectedRoute>
+                  <MockInterviewPage />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ProfileSync>
     </QueryClientProvider>
   );
 }
