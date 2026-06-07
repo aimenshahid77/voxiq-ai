@@ -33,7 +33,6 @@ const OnboardingRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 const ProfileSync = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuthStore();
   useProfile();
   return <>{children}</>;
 };
@@ -41,7 +40,9 @@ const ProfileSync = ({ children }: { children: React.ReactNode }) => {
 function App() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
     document.documentElement.classList.toggle(
       "dark",
       savedTheme === "dark" || (!savedTheme && prefersDark),
@@ -60,7 +61,6 @@ function App() {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/help" element={<HelpCenterPage />} />
             <Route path="/auth/callback" element={<OAuthCallbackPage />} />
-
             <Route
               path="/onboarding"
               element={
@@ -69,8 +69,6 @@ function App() {
                 </OnboardingRoute>
               }
             />
-
-            {/* Profile view */}
             <Route
               path="/dashboard"
               element={
@@ -79,8 +77,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
-            {/* Interviews list view */}
             <Route
               path="/dashboard/interviews"
               element={
@@ -89,8 +85,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
-            {/* Specific interview chat */}
             <Route
               path="/dashboard/interviews/:id"
               element={
@@ -99,7 +93,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/mock/:id"
               element={
